@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: missing-labels-app
+  labels:
+    app: missing-labels-app
+    # Missing required "team" label
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: missing-labels-app
+  template:
+    metadata:
+      labels:
+        app: missing-labels-app
+    spec:
+      containers:
+        - name: nginx
+          image: docker.io/library/nginx:1.25
+          resources:
+            limits:
+              cpu: "200m"
+              memory: "256Mi"

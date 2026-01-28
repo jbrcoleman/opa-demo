@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bad-registry-pod
+  labels:
+    app: bad-registry-pod
+spec:
+  containers:
+    - name: app
+      image: malicious-registry.io/some-image:latest  # Unauthorized registry
+      resources:
+        limits:
+          cpu: "200m"
+          memory: "256Mi"

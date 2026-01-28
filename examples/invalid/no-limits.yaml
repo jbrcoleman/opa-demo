@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: no-limits-pod
+  labels:
+    app: no-limits-pod
+spec:
+  containers:
+    - name: nginx
+      image: docker.io/library/nginx:1.25
+      # Missing resource limits - this will be blocked
